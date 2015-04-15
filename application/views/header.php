@@ -3,18 +3,26 @@
 <head>
 	<meta charset=utf-8>
 	<title>Icopores de Occidente</title>
+  
+  <!--Llamado al estilo de boostrap para el navbar-->
+  <link rel="stylesheet" href="<?= base_url()?>assets/dist/css/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="<?= base_url()?>assets/dist/css/flat-ui.min.css">
+  
+  <!--Llamado a javascript para efecto de boton en el navbar-->
+  <script src="<?=base_url()?>assets/dist/js/vendor/jquery.min.js"></script>
+  <script src="<?=base_url()?>assets/dist/js/flat-ui.min.js"></script>
+  
 </head>
 <body>
-</body>
+<div class="container">
 
-	<header>
-		
-		<nav class="navbar navbar-inverse navbar-embossed" role="navigation">
+	<header>	
+<nav class="navbar navbar-inverse navbar-embossed" role="navigation">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
                 <span class="sr-only">Toggle navigation</span>
               </button>
-              <a class="navbar-brand" href="#">Flat UI</a>
+              <a class="navbar-brand" href="#">Icopores</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse-01">
               <ul class="nav navbar-nav navbar-left">
@@ -44,4 +52,6 @@
               </form>
             </div><!-- /.navbar-collapse -->
           </nav>
-	</header>
+  </header>
+
+  
