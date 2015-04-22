@@ -1,3 +1,5 @@
+<?php if (!$this->session->userdata('users')): redirect('login'); endif; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +13,7 @@
   <!--Llamado a javascript para efecto de boton en el navbar-->
   <script src="<?=base_url()?>assets/dist/js/vendor/jquery.min.js"></script>
   <script src="<?=base_url()?>assets/dist/js/flat-ui.min.js"></script>
-  
+
 </head>
 <body>
 <div class="container">
@@ -37,8 +39,8 @@
                     <li class="divider"></li>
                     <li><a href="#">Separated link</a></li>
                   </ul>
-                </li>
-                <li><a href="#fakelink">About Us</a></li>
+                </li>              
+                <li><a href="<?=site_url('login/logout')?>">Salir</a></li>
                </ul>
                <form class="navbar-form navbar-right" action="#" role="search">
                 <div class="form-group">
