@@ -9,18 +9,11 @@ public function __construct()
 	parent::__construct();
 	
 }
-	public function login($users, $password){
+	public function login($users, $password){		
 
-		/*Nos devuelve una fila es por que existe*/
-		$this->db->where('users', $users);
-		$this->db->where('password',$password);
-		$query = $this->db->get('usuario');
-		if ($query->num_rows()>0) {
-			return TRUE;
-		} else {
-			return FALSE;
-		}
-		
+		$query="call login_users('$users', '$password')";
+        $query2=$this->db->query($query);
+        return $query2;
 	}
 
 	function valida_usuario_ajax($users){
