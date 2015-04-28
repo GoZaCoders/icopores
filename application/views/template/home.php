@@ -1,3 +1,5 @@
+<?php if (!$this->session->userdata('users')): redirect('login'); endif; ?>
+
 <!DOCTYPE html>
 <html>
 	<head>

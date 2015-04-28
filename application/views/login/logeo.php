@@ -51,7 +51,7 @@
 			        		<form action="" method="POST"  >
 						   		 <input type="text" id="users" name="users" placeholder="Nombre de Usuario" class="input-field" required/> 
 						   		 <input type="password" id="password" name="password"  placeholder="Contraseña" class="input-field" required/> 
-						   		 <button type="submit" class="btn btn-login">Ingresar</button> 
+						   		 <button type="submit" id="btnlogin" class="btn btn-login">Ingresar</button> 
 							</form>	
 							<div class="login-links"> 
 					            <a href="forgot-password.html">
@@ -67,8 +67,39 @@
 			    </div>
 			</div>
     	</div>
-     
-      	<!--Termina login y empieza el-->
+
+    	<script type="text/javascript" src="<?=base_url()?>static/js/jquery.min.js"></script>
+	    <script type="text/javascript">
+	    
+	    	    $(document).ready(function(){
+	    		$('#users').submit(function(){
+	    		//e.preventDefault();
+
+	    		var data = $(this).serializeArray();
+
+	    		$.ajax({
+	    			url: 'http://localhost/icopores/index.php/login/valida_login_ajax',
+	    			type: 'POST',
+	    			dataType: 'json',
+	    			data: "users="+$('#users').val(),
+	    		})
+	    		.done(function(){
+	    			console.log('success');
+	    		})
+	    		.fail(function(){
+	    			console.log('error');
+	    		})
+	    		.always(function(){
+	    			console.log('complete');
+	    		});
+
+	    	});
+
+	    });
+	    </script>
+
+	    
+      	<!--Termina login y empieza el footer-->
      	<footer class="container">
      		<p id="footer-text"><small>Developed by <a href="#">GoZa Coders.</a></small></p>
      	</footer>

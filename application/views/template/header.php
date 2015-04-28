@@ -128,7 +128,7 @@
                       <a href="#" class="btn btn-default btn-flat">Perfiles</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                      <a href="<?=site_url('login/logout')?>" class="btn btn-default btn-flat">Cerrar Sesión</a>
                     </div>
                   </li>
                 </ul>

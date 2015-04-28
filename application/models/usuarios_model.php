@@ -23,7 +23,19 @@ public function __construct()
 		
 	}
 
+	function valida_usuario_ajax($users){
+
+		//Comparamos en la DB usuarios y capturamos el nombre de la tabla
+		$this->db->where('users', $users);
+		$query = $this->db->get('usuario');
+		
+		if($query->num_rows() >0){
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+
+	}
+
 }
 
-/* End of file usuarios_model.php */
-/* Location: ./application/models/usuarios_model.php */
