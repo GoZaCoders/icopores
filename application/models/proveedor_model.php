@@ -30,13 +30,12 @@ public function __construct()
     }
 
     public function getProveedores($IdProveedor) {
-        return $this->db->where('idproveedor', $IdProveedor)->get('proveedor')->row();
+        $this->db->where('idproveedor', $IdProveedor);
+        $query = $this->db->get('proveedor');
+        if ($query->num_rows()>0) {
+           return $query;
+        }else{
+            return FALSE;
+        }
     }
-
-    /*public function Proveedor_crud($params){        
-
-        $query="call proveedor_crud('$params')";
-        $query2=$this->db->query($query);
-        return $query2;
-    }*/
 }

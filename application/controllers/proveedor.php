@@ -21,53 +21,61 @@ class Proveedor extends CI_Controller {
         $this->load->view('proveedor/proveedor_view', $data);      
     }
 
-    /*public function insertar_proveedor(){
-        $params = array(
-             $Opcion = 'insert';
-             $IdProveedor = $this->input->post('IdProveedor');
-             $NombreProveedor = $this->input->post('NombreProveedor');
-             $Direccion = $this->input->post('Direccion');
-             $Telefono = $this->input->post('Telefono');
-             $Correo = $this->input->post('Correo');
-                        );
-        $this->load->model('proveedor_model');
-        if($this->proveedor_model->proveedor_crud($params)){
-            redirect('proveedor');
-        }
-    }*/
+//Metodo para cargar los datos de la tabla al formulario.
+public function cargar_proveedor($IdProveedor) {        
 
-     public function insertar_proveedor(){
-      if($this->input->post()){
+        $edicion = $this->proveedor_model->getProveedores($IdProveedor);
+
+        if($edicion != FALSE){
+            foreach ($edicion->result() as $row) {
+                           $nombre_proveedor = $row->nombre_proveedor;
+                           $direccion = $row->direccion;
+                           $telefono = $row->telefono;
+                           $correo = $row->correo;
+                        } 
+                
+                $data = array (
+                'idproveedor' => $IdProveedor,
+                'nombre_proveedor' => $nombre_proveedor,
+                'direccion' => $direccion,
+                'telefono' => $telefono,
+                'correo' => $correo
+                );
+        }else{
+            $data = '';
+            return FALSE;
+        }                                        
+         $this->load->view('proveedor/crear_proveedor', $data);
+    }
+
+
+     public function operacion_proveedor(){
+
+        
+         if($IdProveedor == 0){        
          $Opcion = 'insert';
          $IdProveedor = null;
          $NombreProveedor = $this->input->post('nombre_proveedor');
          $Direccion = $this->input->post('direccion');
          $Telefono = $this->input->post('telefono');
-         $Correo = $this->input->post('correo');
-         $this->load->model('proveedor_model');
+         $Correo = $this->input->post('correo');         
          $this->proveedor_model->Proveedor_crud($Opcion, $IdProveedor, $NombreProveedor, $Direccion, $Telefono, $Correo);
          redirect('proveedor');
-      }else{
-         echo "Sin evento";
-      } 
+
+        }if ($IdProveedor != 0) {
+        echo $resul=1;
+         $Opcion = 'Update';
+         $NombreProveedor = $this->input->post('nombre_proveedor');
+         $Direccion = $this->input->post('direccion');
+         $Telefono = $this->input->post('telefono');
+         $Correo = $this->input->post('correo');         
+         $this->proveedor_model->Proveedor_crud($Opcion, $IdProveedor, $NombreProveedor, $Direccion, $Telefono, $Correo);
+        }                           
    }
 
-  public function editar_proveedor($IdProveedor) {
-         
-     /*if ($IdProveedor){
-             $data = array(
-                'titulo' => 'Crear proveedor',               
-                'contenido' => 'proveedor/crear_proveedor',
-                'data' => $this->proveedor_model->getProveedores($IdProveedor)
-            ); 
-
-            //echo $IdProveedor;
-            $this->load->view('proveedor/crear_proveedor', $data);
-            }*/             
-    }
 
   public function eliminar_proveedor($IdProveedor) {
-        //echo 'hola'; exit;
+        
         if ($IdProveedor) {
             $Opcion = 'Delete';
             $this->proveedor_model->Proveedor_crud($Opcion, $IdProveedor);           

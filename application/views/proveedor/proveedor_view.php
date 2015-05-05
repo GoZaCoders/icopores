@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="<?=base_url()?>assets/dist/css/flat-ui.min.css">
     </head>
     <body>
-        <h2>Proveedores</h2>
+       
         <!--<?php
         //Si existen las sesiones flasdata que se muestren
             if($this->session->flashdata('correcto'))
@@ -17,9 +17,14 @@
                 echo $this->session->flashdata('incorrecto');
         ?>-->
     <div class="container" id="tabla_proveedor">
+     <h2>Proveedores</h2>
     <div class="row" >
     <div class="col-lg-12">
-        <div class="panel panel-default">           
+        <div class="panel panel-default">  
+         <div class="panel-heading">
+                <a href="<?php echo base_url() . $this->router->fetch_class() ?>/crear/" class="btn btn-default"> Crear Proveedor</a>
+
+            </div>         
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="table-responsive">
@@ -50,14 +55,14 @@
                                         <td><?= $data->telefono ?></td>
                                         <td><?= $data->correo ?></td>
                                         <td>
-                                            <a href="#" class="btn btn-primary"> Editar</a>
+                                            <a href="<?=base_url()?>proveedor/cargar_proveedor/<?php echo $data->idproveedor ?>" class="btn btn-primary"> Editar</a>
                                             <a href="<?=base_url()?>proveedor/eliminar_proveedor/<?php echo $data->idproveedor ?>" class="btn btn-danger">Eliminar</a>                                            
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                            
-                        </tbody>
+                        </tbody>    
                         <!-- // Table body END -->
                     </table>
                     <!-- // Table END -->
